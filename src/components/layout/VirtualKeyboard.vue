@@ -13,7 +13,6 @@ export default {
     for (let i = 0; i < this.alphabetString.length; i++) {
       this.alphabet.set(this.alphabetString[i], false);
     }
-    console.log(this.alphabet);
   },
 };
 </script>

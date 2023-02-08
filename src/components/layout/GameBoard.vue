@@ -25,15 +25,19 @@ export default {
     handleKeyPress(key) {
       // check if function instead of letter
       if (key === "backspace") {
-        console.log(this.attempts);
         if (this.currentBox > 0) {
           this.attempts[this.currentRow].pop();
 
           this.currentBox = this.currentBox - 1;
         }
       } else if (key === "enter") {
-        console.log(this.attempts[this.currentRow].length);
-        if (this.attempts[this.currentRow].length === 6) {
+        if (
+          this.attempts[this.currentRow].length === 6 &&
+          (monster_list.list.includes(
+            this.attempts[this.currentRow].join("")
+          ) ||
+            this.attempts[this.currentRow].join("") === "sqrdle")
+        ) {
           this.gradeAttempt();
         }
       } else {
@@ -42,12 +46,10 @@ export default {
           this.attempts[this.currentRow].push(key);
           this.currentBox = this.currentBox + 1;
         }
-
-        console.log(this.attempts);
       }
     },
     gradeAttempt() {
-      let answer = this.attempts[this.currentRow].toString();
+      let answer = this.attempts[this.currentRow].join("");
       if (answer === "sqrdle") {
         this.alternateEnding();
       } else if (answer === this.monster) {
@@ -56,7 +58,6 @@ export default {
         this.finishGame(false);
       }
 
-      console.log("gradeAttempt");
       this.graded[this.currentRow] = true;
       this.currentRow = this.currentRow + 1;
       this.currentBox = 0;

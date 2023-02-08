@@ -13,15 +13,43 @@ export default {
 </script>
 
 <template>
-  <img
-    :src="revealed ? monster_images[monsterName] : monster_images['whos_that']"
-    :alt="
-      revealed
-        ? 'Squirtle and ' + monsterName + ' fusion'
-        : 'silhoutte of Squirtle'
-    "
-    class="monster"
-  />
+  <div class="image-container">
+    <img
+      :src="monster_images['whos_that']"
+      alt="mystery game background"
+      class="background"
+    />
+    <img
+      v-show="revealed"
+      :src="revealed ? monster_images[monsterName] : ''"
+      :alt="
+        revealed
+          ? 'Squirtle and ' + monsterName + ' fusion'
+          : 'silhoutte of Squirtle'
+      "
+      :class="monsterName === 'zapdos' ? 'monster-tall' : 'monster'"
+    />
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.image-container {
+  position: relative;
+  height: 400px;
+}
+.background {
+  position: absolute;
+  left: calc(50% - 200px);
+  top: 0;
+}
+.monster {
+  position: absolute;
+  left: calc(50% - 120px);
+  top: 60px;
+}
+.monster-tall {
+  position: absolute;
+  left: calc(50% - 120px);
+  top: 40px;
+}
+</style>
