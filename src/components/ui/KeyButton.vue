@@ -22,8 +22,9 @@ export default {
   font-size: 30px;
   background-color: aquamarine;
   color: navy;
-  margin: 5px;
+  margin: 2px;
   border: 2px solid navy;
+  border-radius: 5px;
   cursor: pointer;
   display: flex;
   align-items: center;
