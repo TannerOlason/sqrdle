@@ -50,17 +50,17 @@ export default {
     },
     gradeAttempt() {
       let answer = this.attempts[this.currentRow].join("");
+      this.graded[this.currentRow] = true;
+      this.currentRow = this.currentRow + 1;
+      this.currentBox = 0;
+
       if (answer === "sqrdle") {
         this.alternateEnding();
       } else if (answer === this.monster) {
         this.finishGame(true);
-      } else if (this.currentRow === 5) {
+      } else if (this.currentRow === 6) {
         this.finishGame(false);
       }
-
-      this.graded[this.currentRow] = true;
-      this.currentRow = this.currentRow + 1;
-      this.currentBox = 0;
     },
     checkGraded(i, j) {
       if (this.graded[i]) {
@@ -72,22 +72,34 @@ export default {
         ) {
           return "orange-square";
         }
+        return "darkgrey-square";
       }
-      return "red-square";
+      return "grey-square";
     },
     finishGame(win) {
       this.finished = true;
       if (win) {
         // player won
         console.log("winner!");
+        this.reset();
       } else {
         // player loses
         console.log("better luck next time!");
+        this.reset();
       }
     },
     alternateEnding() {
       this.finished = true;
       console.log("alternate ending");
+      this.reset();
+    },
+    reset() {
+      this.attempts = [[], [], [], [], [], []];
+      this.currentRow = 0;
+      this.currentBox = 0;
+      this.graded = [false, false, false, false, false, false];
+      this.finished = false;
+      this.chooseMonster();
     },
   },
   mounted() {
@@ -138,9 +150,13 @@ export default {
   background-color: white;
   border: 2px solid black;
 }
-.red-square {
-  background-color: red;
-  color: white;
+.darkgrey-square {
+  background-color: darkgrey;
+  color: black;
+}
+.grey-square {
+  background-color: lightgrey;
+  color: black;
 }
 .orange-square {
   background-color: orange;
