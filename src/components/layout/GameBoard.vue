@@ -140,8 +140,8 @@ export default {
 }
 
 .grid-square {
-  width: 40px;
-  height: 40px;
+  width: 16%;
+  height: 100%;
   color: black;
   display: flex;
   align-items: center;
@@ -151,7 +151,7 @@ export default {
   border: 2px solid black;
 }
 .darkgrey-square {
-  background-color: darkgrey;
+  background-color: rgba(169, 169, 169, 0.5);
   color: black;
 }
 .grey-square {
@@ -159,11 +159,11 @@ export default {
   color: black;
 }
 .orange-square {
-  background-color: orange;
+  background-color: rgba(255, 165, 0, 0.5);
   color: black;
 }
 .green-square {
-  background-color: green;
+  background-color: rgba(0, 128, 0, 0.5);
   color: white;
 }
 .grid-row {
@@ -171,10 +171,22 @@ export default {
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 16%;
 }
 .game-grid {
   display: flex;
   align-items: center;
+  justify-items: center;
   flex-wrap: wrap;
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  top: 60px;
+  margin: auto;
+}
+.gameboard-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
