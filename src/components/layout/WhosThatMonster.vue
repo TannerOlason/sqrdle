@@ -20,14 +20,16 @@ export default {
       class="background"
     />
     <img
-      v-show="revealed"
-      :src="revealed ? monster_images[monsterName] : ''"
+      :src="monster_images[monsterName]"
       :alt="
         revealed
           ? 'Squirtle and ' + monsterName + ' fusion'
           : 'silhoutte of Squirtle'
       "
-      :class="monsterName === 'zapdos' ? 'monster-tall' : 'monster'"
+      :class="[
+        monsterName === 'zapdos' ? 'monster-tall' : 'monster',
+        revealed ? '' : 'silhouette',
+      ]"
     />
   </div>
 </template>
@@ -51,5 +53,8 @@ export default {
   position: absolute;
   left: calc(50% - 120px);
   top: 40px;
+}
+.silhouette {
+  filter: contrast(0%) brightness(50%);
 }
 </style>
