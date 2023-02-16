@@ -24,7 +24,7 @@ export default {
       :alt="
         revealed
           ? 'Squirtle and ' + monsterName + ' fusion'
-          : 'silhoutte of Squirtle'
+          : 'silhouette of Squirtle and mystery monster fusion'
       "
       :class="[
         monsterName === 'zapdos' ? 'monster-tall' : 'monster',
