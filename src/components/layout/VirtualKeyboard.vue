@@ -1,5 +1,6 @@
 <script>
 import KeyButton from "../ui/KeyButton.vue";
+
 export default {
   name: "VirtualKeyboard",
   components: { KeyButton },

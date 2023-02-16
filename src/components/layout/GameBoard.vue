@@ -1,11 +1,12 @@
 <script>
 import VirtualKeyboard from "./VirtualKeyboard.vue";
 import WhosThatMonster from "./WhosThatMonster.vue";
+import Banner from "../ui/Banner.vue";
 import monster_list from "../../assets/data/monsters.js";
 
 export default {
   name: "GameBoard",
-  components: { VirtualKeyboard, WhosThatMonster },
+  components: { VirtualKeyboard, WhosThatMonster, Banner },
   data() {
     return {
       monster: "",
@@ -15,6 +16,8 @@ export default {
       currentAttempt: "",
       attempts: [[], [], [], [], [], []],
       graded: [false, false, false, false, false, false],
+      finished: false,
+      endPhrase: "",
     };
   },
   methods: {
@@ -80,18 +83,21 @@ export default {
       this.finished = true;
       if (win) {
         // player won
-        console.log("winner!");
-        this.reset();
+        // console.log("winner!");
+        this.endPhrase = "That's right. It's Squirtle!";
+        // this.reset();
       } else {
         // player loses
-        console.log("better luck next time!");
-        this.reset();
+        this.endPhrase = "No. I'm sorry, it was Squirtle.";
+        // console.log("better luck next time!");
+        // this.reset();
       }
     },
     alternateEnding() {
       this.finished = true;
-      console.log("alternate ending");
-      this.reset();
+      // console.log("alternate ending");
+      this.endPhrase = "Correct! It's Squirtle! You're good at this!";
+      // this.reset();
     },
     reset() {
       this.attempts = [[], [], [], [], [], []];
@@ -127,13 +133,31 @@ export default {
       </div>
     </div>
     <div class="keyboard-container">
-      <VirtualKeyboard @keyPressed="handleKeyPress" class="keyboard" />
+      <Banner
+        :text="endPhrase"
+        :promptText="'Would you like to play again?'"
+        :unravel="finished"
+        @resetGame="reset"
+      />
+      <div class="keyboard">
+        <VirtualKeyboard @keyPressed="handleKeyPress" class="keyboard" />
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
 .keyboard-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  position: relative;
+}
+.keyboard {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
