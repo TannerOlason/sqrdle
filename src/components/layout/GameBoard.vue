@@ -184,7 +184,7 @@ export default {
 }
 .orange-square {
   background-color: rgba(255, 165, 0, 0.5);
-  color: black;
+  color: white;
 }
 .green-square {
   background-color: rgba(0, 128, 0, 0.5);

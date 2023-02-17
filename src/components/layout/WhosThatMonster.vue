@@ -28,7 +28,7 @@ export default {
       "
       :class="[
         monsterName === 'zapdos' ? 'monster-tall' : 'monster',
-        revealed ? '' : 'silhouette',
+        revealed ? 'front' : 'silhouette',
       ]"
     />
   </div>
@@ -56,5 +56,8 @@ export default {
 }
 .silhouette {
   filter: contrast(0%) brightness(50%);
+}
+.front {
+  z-index: 3;
 }
 </style>
