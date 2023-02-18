@@ -27,7 +27,7 @@ export default {
           : 'silhouette of Squirtle and mystery monster fusion'
       "
       :class="[
-        monsterName === 'zapdos' ? 'monster-tall' : 'monster',
+        monsterName === 'zapdos' ? 'monster-wide' : 'monster',
         revealed ? 'front' : 'silhouette',
       ]"
     />
@@ -49,10 +49,10 @@ export default {
   left: calc(50% - 120px);
   top: 60px;
 }
-.monster-tall {
+.monster-wide {
   position: absolute;
-  left: calc(50% - 120px);
-  top: 40px;
+  left: calc(50% - 150px);
+  top: 60px;
 }
 .silhouette {
   filter: contrast(0%) brightness(50%);
