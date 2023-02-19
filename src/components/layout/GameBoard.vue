@@ -150,6 +150,7 @@ export default {
 .keyboard-container {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   width: 100%;
   position: relative;
