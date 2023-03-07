@@ -56,7 +56,7 @@ export default {
       :tried="alphabet.get(alphabetString[i + 18])"
       @click="this.$emit('keyPressed', alphabetString[i + 18])"
     />
-    <div class="pokedex spacer"></div>
+    <div class="dex spacer" @click="this.$emit('toggleDex')">Dex</div>
     <div class="hints spacer"></div>
   </div>
 </template>
@@ -99,7 +99,7 @@ export default {
   min-width: 80px;
   min-height: 40px;
 }
-.pokedex {
+.dex {
   min-width: 80px;
   min-height: 40px;
 }
