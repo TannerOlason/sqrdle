@@ -1,4 +1,5 @@
 <script>
+import Dex from "./Dex.vue";
 import VirtualKeyboard from "./VirtualKeyboard.vue";
 import WhosThatMonster from "./WhosThatMonster.vue";
 import Banner from "../ui/Banner.vue";
@@ -6,7 +7,7 @@ import monster_list from "../../assets/data/monsters.js";
 
 export default {
   name: "GameBoard",
-  components: { VirtualKeyboard, WhosThatMonster, Banner },
+  components: { VirtualKeyboard, WhosThatMonster, Banner, Dex },
   data() {
     return {
       monster: "",
@@ -18,6 +19,7 @@ export default {
       graded: [false, false, false, false, false, false],
       finished: false,
       endPhrase: "",
+      dexShow: false,
     };
   },
   methods: {
@@ -107,6 +109,9 @@ export default {
       this.finished = false;
       this.chooseMonster();
     },
+    toggleDex(show) {
+      this.dexShow = show || !this.dexShow;
+    },
   },
   mounted() {
     this.chooseMonster();
@@ -115,6 +120,9 @@ export default {
 </script>
 
 <template>
+  <div v-show="dexShow" class="dex-container">
+    <Dex @closeDex="toggleDex(false)" />
+  </div>
   <div class="monster-container">
     <WhosThatMonster :revealed="finished" :monsterName="monster" />
   </div>
@@ -140,13 +148,29 @@ export default {
         @resetGame="reset"
       />
       <div class="keyboard">
-        <VirtualKeyboard @keyPressed="handleKeyPress" class="keyboard" />
+        <VirtualKeyboard
+          @keyPressed="handleKeyPress"
+          @toggleDex="toggleDex"
+          class="keyboard"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.dex-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
 .keyboard-container {
   display: flex;
   align-items: center;
@@ -162,6 +186,7 @@ export default {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .grid-square {
