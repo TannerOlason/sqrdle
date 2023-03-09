@@ -121,7 +121,7 @@ export default {
 
 <template>
   <div v-show="dexShow" class="dex-container">
-    <Dex @closeDex="toggleDex(false)" />
+    <Dex :monster_list="monster_list" @closeDex="toggleDex(false)" />
   </div>
   <div class="monster-container">
     <WhosThatMonster :revealed="finished" :monsterName="monster" />
