@@ -1,5 +1,43 @@
 <script>
-export default {};
+import axios from "axios";
+export default {
+  data() {
+    return {
+      monsterData: [],
+    };
+  },
+  props: ["monster_list"],
+  methods: {
+    async getMonsterData() {
+      const baseUrl = "https://pokeapi.co/api/v2/pokemon/";
+      try {
+        for (let i = 0; i < this.monster_list.list.length; i++) {
+          let monster =
+            this.monster_list.list[i] === "mrmime"
+              ? "mr-mime"
+              : this.monster_list.list[i];
+          const response = await axios.get(baseUrl + monster);
+          const descriptionURL = response.data.species.url;
+          const descriptionResponse = await axios.get(descriptionURL);
+          const description = descriptionResponse.data.flavor_text_entries
+            .find((entry) => entry.language.name === "en")
+            .flavor_text.replace(/[\n\f]/g, " ");
+          const sprite = response.data.sprites.front_default;
+          this.monsterData.push({
+            name: monster,
+            description,
+            sprite,
+          });
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  },
+  mounted() {
+    this.getMonsterData();
+  },
+};
 </script>
 <template>
   <div class="dex-card">
@@ -7,11 +45,32 @@ export default {};
       <div class="dex-title">The Dex!</div>
       <button class="x-button" @click="this.$emit('closeDex')">X</button>
     </div>
-    <div class="icon-grid"></div>
+    <div class="icon-grid">
+      <div
+        class="monster-grid-space"
+        v-for="monster in monsterData"
+        :key="monster.name"
+      >
+        <img :src="monster.sprite" :alt="monster.name" />
+      </div>
+    </div>
     <div class="dex-bottom-bar"></div>
   </div>
 </template>
 <style scoped>
+.monster-grid-space {
+  width: 55px;
+  height: 55px;
+  border: 1px solid red;
+  cursor: pointer;
+}
+.monster-grid-space:hover {
+  background-color: lightgray;
+}
+.monster-grid-space img {
+  max-width: 100%;
+  max-height: 100%;
+}
 .dex-card {
   width: 300px;
   height: 500px;
@@ -32,19 +91,22 @@ export default {};
   border: unset;
   border-left: 2px solid black;
   cursor: pointer;
-  color: aquamarine;
+  color: black;
   border-radius: 0 3px 0 0;
 }
 .x-button:hover {
   background-color: #b37659;
   border: unset;
   border-left: 2px solid black;
-  color: #59b2a2;
 }
 .icon-grid {
   height: calc(100% - 60px);
   border-left: 2px solid black;
   border-right: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .dex-top-bar,
 .dex-bottom-bar {
