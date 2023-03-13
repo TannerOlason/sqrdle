@@ -27,11 +27,16 @@ export default {
             name: monster,
             description,
             sprite,
+            show: false
           });
         }
       } catch (err) {
         console.log(err);
       }
+    },
+    toggleInfo(monName) {
+      let i = this.monsterData.findIndex(el => el.name === monName)
+      this.monsterData[i].show = true;
     },
   },
   mounted() {
@@ -50,8 +55,12 @@ export default {
         class="monster-grid-space"
         v-for="monster in monsterData"
         :key="monster.name"
+        @click="toggleInfo(monster.name)"
+        :ref="monster.name+'-grid-space'"
       >
-        <img :src="monster.sprite" :alt="monster.name" />
+        <div v-show="monster.show" class="mon-name">{{ monster.name }}</div>
+        <img :src="monster.sprite" :alt="monster.name + ' image'" />
+        <div v-show="monster.show" class="mon-description">{{ monster.description }}</div>
       </div>
     </div>
     <div class="dex-bottom-bar"></div>
