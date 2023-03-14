@@ -25,6 +25,6 @@ npm run build
 
 ## Images
 You will have to find your own fusion images for this project as they're not 
-provided by pokeapi, nor do I plan to host them in the future. 
+provided by pokeapi, nor do I plan to host them here in the future. 
 See: /src/assets/data/monster_images.js for where to drop and what to name 
 these files.
