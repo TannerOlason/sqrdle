@@ -36,8 +36,12 @@ export default {
     },
     toggleInfo(monName) {
       let i = this.monsterData.findIndex(el => el.name === monName)
-      this.monsterData[i].show = true;
+      this.monsterData[i].show = !this.monsterData[i].show;
+      this.$refs[monName+'-grid-space'][0].classList.toggle('fill-dex')
     },
+    capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1)
+    }
   },
   mounted() {
     this.getMonsterData();
@@ -58,7 +62,7 @@ export default {
         @click="toggleInfo(monster.name)"
         :ref="monster.name+'-grid-space'"
       >
-        <div v-show="monster.show" class="mon-name">{{ monster.name }}</div>
+        <div v-show="monster.show" class="mon-name">{{ capitalize(monster.name) }}</div>
         <img :src="monster.sprite" :alt="monster.name + ' image'" />
         <div v-show="monster.show" class="mon-description">{{ monster.description }}</div>
       </div>
@@ -70,8 +74,23 @@ export default {
 .monster-grid-space {
   width: 55px;
   height: 55px;
-  border: 1px solid red;
   cursor: pointer;
+}
+.monster-grid-space:hover {
+  background-color: grey;
+}
+.fill-dex {
+  width: 100%;
+  height: 100%;
+  z-index: 101;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+}
+.mon-name, 
+.mon-description {
+  padding: 1em;
 }
 .monster-grid-space:hover {
   background-color: lightgray;
@@ -116,6 +135,7 @@ export default {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  position: relative;
 }
 .dex-top-bar,
 .dex-bottom-bar {
