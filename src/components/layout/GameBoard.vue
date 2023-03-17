@@ -228,8 +228,10 @@ export default {
   align-items: center;
   justify-items: center;
   flex-wrap: wrap;
-  width: 400px;
-  height: 400px;
+  max-width: 400px;
+  max-height: 400px;
+  width: 100%;
+  height: 60%;
   position: absolute;
   top: 60px;
   margin: auto;

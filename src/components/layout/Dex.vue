@@ -72,8 +72,8 @@ export default {
 </template>
 <style scoped>
 .monster-grid-space {
-  width: 55px;
-  height: 55px;
+  width: 16%;
+  height: 16%;
   cursor: pointer;
 }
 .monster-grid-space:hover {
@@ -100,8 +100,10 @@ export default {
   max-height: 100%;
 }
 .dex-card {
-  width: 300px;
-  height: 500px;
+  max-width: 800px;
+  max-height: 1200px;
+  width: 100%;
+  height: 100%;
   background-color: white;
   z-index: 101;
   border-radius: 5px;
