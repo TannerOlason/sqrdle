@@ -45,4 +45,10 @@ export default {
 .keybox.inactive:hover {
   background-color: rgba(127, 255, 212, 0.3);
 }
+/* eliminate hovers on touch screens */
+@media only screen and (pointer: coarse) {
+  .keybox:hover {
+    background-color: aquamarine;
+  }
+}
 </style>
