@@ -181,7 +181,7 @@ export default {
 }
 .keyboard {
   position: absolute;
-  top: 0;
+  top: 1em;
   left: 0;
   display: flex;
   align-items: center;
@@ -240,5 +240,21 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+/* media breakpoints */
+@media only screen and (max-width: 600px) {
+  .dex-container {
+    width: 100%;
+    height: calc(100% - 50px);
+    /* left: calc(50% - 250px); */
+  }
+}
+@media only screen and (min-width: 600px) {
+  .dex-container {
+    max-width: 600px;
+    max-height: 600px;
+    left: calc(50% - 300px);
+    top: 55px;
+  }
 }
 </style>
