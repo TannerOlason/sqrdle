@@ -7,27 +7,13 @@ export default {
   data() {
     return {
       alphabet: new Map(),
-      alphabetString: "qwertyuiopasdfghjklzxcvbnm",
-      keyPositionSwap: false
+      alphabetString: "qwertyuiopasdfghjklzxcvbnm"
     };
-  },
-  methods: {
-    onResize() {
-      if (window.innerWidth > 992) {
-        this.keyPositionSwap = false
-      } else {
-        this.keyPositionSwap = true
-      }
-    }
   },
   created() {
     for (let i = 0; i < this.alphabetString.length; i++) {
       this.alphabet.set(this.alphabetString[i], false);
     }
-    window.addEventListener('resize', this.onResize)
-  },
-  beforeUnmount() {
-    window.removeEventListener('resize', this.onResize)
   }
 };
 </script>
@@ -42,9 +28,8 @@ export default {
       @click="this.$emit('keyPressed', alphabetString[i - 1])"
     />
     <div
-      class="backspace spacer"
+      class="backspace spacer top-backspace"
       @click="this.$emit('keyPressed', 'backspace')"
-      :class="!keyPositionSwap ? 'show-backspace' : ''"
     >
     <Atlas icon="ArrowLeft" :size="24" />
     </div>
@@ -76,9 +61,8 @@ export default {
     </div>
     <div class="hints spacer">?</div>
     <div
-      class="backspace spacer"
+      class="backspace spacer bottom-backspace"
       @click="this.$emit('keyPressed', 'backspace')"
-      :class="keyPositionSwap ? 'show-backspace' : ''"
     >
     <Atlas icon="ArrowLeft" :size="24" />
     </div>
@@ -148,20 +132,31 @@ export default {
 /* media breakpoints */
 @media only screen and (max-width: 600px) {
   .left-shift-space,
-  .caps-lock-space {
+  .caps-lock-space,
+  .top-backspace {
     display: none;
+  }
+  .bottom-backspace {
+    display: flex;
   }
   .hints,
   .dex,
   .backspace,
   .enter-space {
-    min-width: 40px;
+    min-width: 8%;
+  }
+  .spacer {
+    margin: 1px;
   }
 }
 @media only screen and (min-width: 600px) {
   .left-shift-space,
-  .caps-lock-space {
+  .caps-lock-space,
+  .top-backspace {
     display: none;
+  }
+  .bottom-backspace {
+    display: flex;
   }
   .hints,
   .dex,
@@ -172,8 +167,12 @@ export default {
 }
 @media only screen and (min-width: 768px) {
   .left-shift-space,
-  .caps-lock-space {
+  .caps-lock-space,
+  .top-backspace {
     display: none;
+  }
+  .bottom-backspace {
+    display: flex;
   }
   .hints,
   .dex,
@@ -187,11 +186,29 @@ export default {
   .caps-lock-space {
     display: unset;
   }
-  .hints,
-  .dex,
-  .backspace,
+  .bottom-backspace { 
+    display: none;
+  }
+  .top-backspace {
+    display: flex;
+  }
+  .left-shift-space {
+    min-width: 40px;
+  }
   .enter-space {
+    min-width: 80px;
+  }
+  .dex {
+    min-width: 80px;
+  }
+  .hints {
     min-width: 75px;
+  }
+  .caps-lock-space {
+    min-width: 25px;
+  }
+  .backspace {
+    min-width: 65px;
   }
 }
 </style>

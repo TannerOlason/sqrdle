@@ -51,4 +51,17 @@ export default {
     background-color: aquamarine;
   }
 }
+/* media breakpoints */
+@media only screen and (max-width: 600px) {
+  .keybox {
+    min-width: 8%;
+    margin: 1px;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .keybox {
+    min-width: 40px;
+    margin: 2px;
+  }
+}
 </style>

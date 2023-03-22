@@ -75,6 +75,10 @@ export default {
   width: 16%;
   height: 16%;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .monster-grid-space:hover {
   background-color: grey;
@@ -92,12 +96,19 @@ export default {
 .mon-description {
   padding: 1em;
 }
+.mon-name {
+  font-size: 30px;
+}
 .monster-grid-space:hover {
   background-color: lightgray;
 }
 .monster-grid-space img {
   max-width: 100%;
   max-height: 100%;
+}
+.fill-dex img {
+  width: 200px;
+  height: 200px;
 }
 .dex-card {
   max-width: 800px;
@@ -156,5 +167,36 @@ export default {
 }
 .dex-bottom-bar {
   border-radius: 0 0 5px 5px;
+}
+/* media breakpoints */
+@media only screen and (max-width: 600px) {
+  .dex-top-bar,
+  .dex-bottom-bar {
+    min-height: 50px;
+  }
+  .x-button {
+    height: 50px;
+    width: 50px;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .dex-top-bar,
+  .dex-bottom-bar {
+    min-height: 40px;
+  }
+  .x-button {
+    height: 40px;
+    width: 40px;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .dex-top-bar,
+  .dex-bottom-bar {
+    min-height: 30px;
+  }
+  .x-button {
+    height: 30px;
+    width: 30px;
+  }
 }
 </style>
