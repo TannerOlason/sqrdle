@@ -17,7 +17,7 @@ export default {
     <img
       :src="monster_images['whos_that']"
       alt="mystery game background"
-      class="background"
+      class="monster-background"
     />
     <img
       :src="monster_images[monsterName]"
@@ -53,6 +53,9 @@ export default {
   position: absolute;
   left: calc(50% - 150px);
   top: 60px;
+}
+.monster-background {
+  border-radius: 10px;
 }
 .silhouette {
   filter: contrast(0%) brightness(50%);

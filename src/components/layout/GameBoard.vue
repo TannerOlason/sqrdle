@@ -199,6 +199,7 @@ export default {
   font-size: 1.4em;
   background-color: white;
   border: 2px solid black;
+  border-radius: 10px;
 }
 .darkgrey-square {
   background-color: rgba(169, 169, 169, 0.5);
