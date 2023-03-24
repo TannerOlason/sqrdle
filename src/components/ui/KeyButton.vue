@@ -32,7 +32,7 @@ export default {
 }
 
 .keybox:hover {
-  background-color: rgba(127, 255, 212, 0.5);
+  background-color: rgb(183, 255, 231);
 }
 
 .keybox.inactive {
