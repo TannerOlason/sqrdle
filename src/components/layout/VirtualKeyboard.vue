@@ -147,6 +147,7 @@ export default {
   }
   .spacer {
     margin: 1px;
+    height: 60px;
   }
 }
 @media only screen and (min-width: 600px) {

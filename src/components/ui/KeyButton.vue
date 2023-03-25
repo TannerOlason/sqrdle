@@ -56,6 +56,7 @@ export default {
   .keybox {
     min-width: 8%;
     margin: 1px;
+    height: 60px;
   }
 }
 @media only screen and (min-width: 600px) {

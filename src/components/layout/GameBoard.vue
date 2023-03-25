@@ -247,7 +247,10 @@ export default {
   .dex-container {
     width: 100%;
     height: calc(100% - 50px);
-    /* left: calc(50% - 250px); */
+  }
+  .keyboard-container {
+    position: absolute;
+    bottom: 240px;
   }
 }
 @media only screen and (min-width: 600px) {
