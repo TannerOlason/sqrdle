@@ -7,7 +7,6 @@
     "dev": "vite"
   },
   "dependencies": {
-    "@vectopus/atlas-icons-vue": "^0.0.5",
     "axios": "^1.3.4",
     "core-js": "^3.8.3",
     "vue": "^3.2.13",
@@ -16,6 +15,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@vectopus/atlas-icons-vue": "^0.0.5",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
