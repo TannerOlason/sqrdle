@@ -31,6 +31,9 @@ import mewtwo from "../monster_images/mewtwo.png";
 import voltorb from "../monster_images/voltorb.png";
 import electrode from "../monster_images/electrode.png";
 import whos_that from "../monster_images/whos_that.png";
+import arrow_left from "../images/arrow-left.svg";
+import curve_arrow_left from "../images/curve-arrow-left.svg";
+import calculator from "../images/calculator.svg";
 
 export default {
   weedle,
@@ -66,4 +69,7 @@ export default {
   voltorb,
   electrode,
   whos_that,
+  arrow_left,
+  curve_arrow_left,
+  calculator
 };
