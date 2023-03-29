@@ -1,6 +1,6 @@
 <script>
 import GameBoard from "./components/layout/GameBoard.vue";
-import images from "./assets/data/monster_images.js"
+import images from "./assets/data/images.js"
 
 export default {
   name: "Sqrdle",

@@ -1,12 +1,12 @@
 <script>
-import monster_images from "../../assets/data/monster_images.js";
+import images from "../../assets/data/images.js";
 
 export default {
   name: "WhosThatMonster",
   props: ["revealed", "monsterName"],
   data() {
     return {
-      monster_images,
+      images,
     };
   },
 };
@@ -15,12 +15,12 @@ export default {
 <template>
   <div class="image-container">
     <img
-      :src="monster_images['whos_that']"
+      :src="images['whos_that']"
       alt="mystery game background"
       class="monster-background"
     />
     <img
-      :src="monster_images[monsterName]"
+      :src="images[monsterName]"
       :alt="
         revealed
           ? 'Squirtle and ' + monsterName + ' fusion'

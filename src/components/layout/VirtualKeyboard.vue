@@ -1,5 +1,6 @@
 <script>
 import KeyButton from "../ui/KeyButton.vue";
+import images from "../../assets/data/images"
 
 export default {
   name: "VirtualKeyboard",
@@ -7,7 +8,8 @@ export default {
   data() {
     return {
       alphabet: new Map(),
-      alphabetString: "qwertyuiopasdfghjklzxcvbnm"
+      alphabetString: "qwertyuiopasdfghjklzxcvbnm",
+      images
     };
   },
   created() {
@@ -31,7 +33,7 @@ export default {
       class="backspace spacer top-backspace"
       @click="this.$emit('keyPressed', 'backspace')"
     >
-    <Atlas icon="ArrowLeft" :size="24" />
+    <img :src="images['arrow_left']" alt="Calcualtor icons">
     </div>
   </div>
   <div class="row-2">
@@ -44,7 +46,7 @@ export default {
       @click="this.$emit('keyPressed', alphabetString[i + 9])"
     />
     <div class="enter-space spacer" @click="this.$emit('keyPressed', 'enter')">
-      <Atlas icon="CurveArrowLeft" :size="24" />
+      <img :src="images['curve_arrow_left']" alt="Calcualtor icons">
     </div>
   </div>
   <div class="row-3">
@@ -57,14 +59,14 @@ export default {
       @click="this.$emit('keyPressed', alphabetString[i + 18])"
     />
     <div class="dex spacer" @click="this.$emit('toggleDex')">
-      <Atlas icon="Calculator" :size="24" />
+      <img :src="images['calculator']" alt="Calcualtor icons">
     </div>
     <div class="hints spacer">?</div>
     <div
       class="backspace spacer bottom-backspace"
       @click="this.$emit('keyPressed', 'backspace')"
     >
-    <Atlas icon="ArrowLeft" :size="24" />
+    <img :src="images['arrow_left']" alt="Calcualtor icons">
     </div>
   </div>
 </template>
