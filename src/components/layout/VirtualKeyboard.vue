@@ -1,6 +1,8 @@
 <script>
 import KeyButton from "../ui/KeyButton.vue";
-import images from "../../assets/data/images"
+import images from "../../assets/data/images";
+import { useKeypress } from "vue3-keypress";
+import { ref } from "vue";
 
 export default {
   name: "VirtualKeyboard",
@@ -16,6 +18,28 @@ export default {
     for (let i = 0; i < this.alphabetString.length; i++) {
       this.alphabet.set(this.alphabetString[i], false);
     }
+  },
+  setup(props, { emit }) {
+    const isActiveRef = ref(true);
+
+    const someSuccessCallback = ({ keyCode }) => {};
+
+    const someAnyKeyCallback = ({ event }) => {
+      emit('keyPressed', event.key.toLowerCase())
+    };
+
+    useKeypress({
+      keyEvent: "keydown",
+      // necessary for library to work
+      keyBinds: [{ keyCode: "backspace", success: someSuccessCallback }],
+      onAnyKey: someAnyKeyCallback,
+      isActive: isActiveRef,
+    });
+
+    return {};
+  },
+  mounted() {
+    console.log(this.$refs['key-a'])
   }
 };
 </script>
