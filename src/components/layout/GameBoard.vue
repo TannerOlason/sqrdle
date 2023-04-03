@@ -36,7 +36,10 @@ export default {
           this.currentBox = this.currentBox - 1;
         }
       } else if (key === "enter") {
-        if (
+        if (this.finished) {
+          this.reset();
+        }
+        else if (
           this.attempts[this.currentRow].length === 6 &&
           (monster_list.list.includes(
             this.attempts[this.currentRow].join("")
