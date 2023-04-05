@@ -40,9 +40,8 @@ export default {
 
     return {};
   },
-  mounted() {
-    console.log(this.$refs['key-a'])
-  }
+  mounted() {},
+  emits: ['toggleDex', 'toggleCredits', 'keyPressed']
 };
 </script>
 
@@ -96,7 +95,10 @@ export default {
       <img :src="images['calculator']" 
         alt="Calculator icon">
     </div>
-    <div class="hints spacer">?</div>
+    <div class="hints spacer"
+      @click="this.$emit('toggleCredits')">
+      ?
+    </div>
     <div class="backspace spacer bottom-backspace"
       tabindex="0"
       @click="this.$emit('keyPressed', 'backspace')">
