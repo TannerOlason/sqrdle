@@ -1,5 +1,6 @@
 <script>
 import Dex from "./Dex.vue";
+import Credits from "./Credits.vue";
 import VirtualKeyboard from "./VirtualKeyboard.vue";
 import WhosThatMonster from "./WhosThatMonster.vue";
 import Banner from "../ui/Banner.vue";
@@ -7,7 +8,7 @@ import monster_list from "../../assets/data/monsters.js";
 
 export default {
   name: "GameBoard",
-  components: { VirtualKeyboard, WhosThatMonster, Banner, Dex },
+  components: { VirtualKeyboard, WhosThatMonster, Banner, Dex, Credits },
   data() {
     return {
       monster: "",
@@ -20,6 +21,7 @@ export default {
       finished: false,
       endPhrase: "",
       dexShow: false,
+      creditsShow: false
     };
   },
   methods: {
@@ -115,6 +117,9 @@ export default {
     toggleDex(show) {
       this.dexShow = show || !this.dexShow;
     },
+    toggleCredits(show) {
+      this.creditsShow = show || !this.creditsShow
+    }
   },
   mounted() {
     this.chooseMonster();
@@ -125,6 +130,9 @@ export default {
 <template>
   <div v-show="dexShow" class="dex-container">
     <Dex :monster_list="monster_list" @closeDex="toggleDex(false)" />
+  </div>
+  <div v-show="creditsShow" class="credits-container">
+    <Credits @closeCredits="toggleCredits(false)" />
   </div>
   <div class="monster-container">
     <WhosThatMonster :revealed="finished" :monsterName="monster" />
@@ -154,6 +162,7 @@ export default {
         <VirtualKeyboard
           @keyPressed="handleKeyPress"
           @toggleDex="toggleDex"
+          @toggleCredits="toggleCredits"
           class="keyboard"
         />
       </div>
@@ -162,7 +171,8 @@ export default {
 </template>
 
 <style scoped>
-.dex-container {
+.dex-container,
+.credits-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -247,7 +257,8 @@ export default {
 }
 /* media breakpoints */
 @media only screen and (max-width: 600px) {
-  .dex-container {
+  .dex-container,
+  .credits-container {
     width: 100%;
     height: calc(100% - 50px);
   }
@@ -257,7 +268,8 @@ export default {
   }
 }
 @media only screen and (min-width: 600px) {
-  .dex-container {
+  .dex-container,
+  .credits-container {
     max-width: 600px;
     max-height: 600px;
     left: calc(50% - 300px);
