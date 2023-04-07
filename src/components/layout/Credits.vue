@@ -19,14 +19,51 @@ export default {
       <button class="x-button" @click="this.$emit('closeCredits')">X</button>
     </div>
     <div class="credits-body">
-
+        <div class="credits-body-title">sqrdle</div>
+        <div class="credits-text">
+            <div class="game-instructions">Games Instructions & Rules:</div> <br>
+            - Guess a six-letter monster name.<br>
+            - Six attempts are allowed.<br>
+            - Attempts will reveal a silhouette of the monster.<br>
+            - Attempts will color boxes based on their correctness.<br>
+            - Incorrect letters will show grey.<br>
+            - Correct letters in the correct position will show green.<br>
+            - Correct letters in the incorrect position will show orange.<br>
+            - The Dex, represented by the calculator icon, will show possible monster names and details.
+        </div>
+        <div class="credits-name">Written by Tanner Olason</div>
+        <a class="credits-github-link" href="https://github.com/TannerOlason/sqrdle">GitHub</a>
     </div>
     <div class="credits-bottom-bar"></div>
   </div>
 </template>
 <style scoped>
+.credits-body-title {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+.credits-name,
+.credits-github-link,
+.credits-body-title,
+.credits-text {
+    padding: 1em;
+    margin-bottom: 0.4em;
+    border-radius: 5px;
+}
+.credits-text {
+    text-align: left;
+    margin-left: 2em;
+}
+.game-instructions {
+    font-size: 1.2em;
+}
+.credits-github-link:hover {
+    background-color: lightgrey;
+}
 .credits-body {
     height: calc(100% - 60px);
+    border-left: 2px solid black;
+    border-right: 2px solid black;
 }
 .monster-grid-space {
   width: 16%;
