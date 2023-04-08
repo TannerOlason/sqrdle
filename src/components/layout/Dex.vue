@@ -79,6 +79,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  border-radius: 5px;
 }
 .monster-grid-space:hover {
   background-color: grey;
