@@ -37,6 +37,10 @@ export default {
 
           this.currentBox = this.currentBox - 1;
         }
+      } else if (key === "?" || key === "/") {
+        this.toggleCredits()
+      } else if (key === "`") {
+        this.toggleDex()
       } else if (key === "enter") {
         if (this.finished) {
           this.reset();

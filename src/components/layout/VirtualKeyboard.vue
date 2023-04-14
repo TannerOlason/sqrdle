@@ -25,7 +25,7 @@ export default {
     const someSuccessCallback = ({ keyCode }) => {};
 
     const someAnyKeyCallback = ({ event }) => {
-      if ("qwertyuiopasdfghjklzxcvbnmEnterBackspace".includes(event.key)) {
+      if ("qwertyuiopasdfghjklzxcvbnmEnterBackspace/?`".includes(event.key)) {
         emit('keyPressed', event.key.toLowerCase())
       }
     };
