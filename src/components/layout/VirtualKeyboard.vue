@@ -111,11 +111,24 @@ export default {
 .row-1,
 .row-2,
 .row-3 {
-  width: 100%;
+  max-width: 560px;
+  min-width: 390px;
+  padding: 0;
   display: flex;
   margin: auto;
   align-items: center;
   justify-content: center;
+  background-color: black;
+  padding-right: 3px;
+  padding-left: 3px;
+}
+.row-1 {
+  border-radius: 5px 5px 0 0;
+  padding-top: 3px;
+}
+.row-3 {
+  border-radius: 0 0 5px 5px;
+  padding-bottom: 3px;
 }
 .spacer {
   font-size: 30px;
@@ -186,6 +199,12 @@ export default {
   .spacer {
     margin: 1px;
     height: 60px;
+  }
+  .row-1,
+  .row-2,
+  .row-3 {
+    min-width: 100%;
+    border-radius: 0;
   }
 }
 @media only screen and (min-width: 600px) {
