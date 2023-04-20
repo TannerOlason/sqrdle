@@ -203,6 +203,7 @@ export default {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  flex-direction: column;
   width: 100%;
 }
 
