@@ -43,9 +43,8 @@ body {
   position: absolute;
   top: 0%;
   left: 0%;
-  width: 100%;
-  height: 100vh;
-  background-repeat: repeat, repeat;
+  width: 1920px;
+  height: 1140px;
   background-position: max(25%, 50px) max(75%, 150px), max(75%, 150px) max(25%, 50px);
   background-color:  	#f3c877;
   background-size: max(5%, 50px), max(5%, 50px);
