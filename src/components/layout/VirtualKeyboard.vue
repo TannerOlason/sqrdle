@@ -257,7 +257,7 @@ export default {
     min-width: 80px;
   }
   .dex {
-    min-width: 80px;
+    min-width: 78px;
   }
   .hints {
     min-width: 75px;
